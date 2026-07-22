@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Portfolio Home{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="hero-content glass-card slide-up-anim">
+        <h1>Welcome to the <span class="gradient-text">Future</span></h1>
+        <p>A modern user management system built with Python, Flask, and an immersive Glassmorphism UI.</p>
+        <div class="hero-buttons">
+            {% if current_user %}
+                <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-glow">Go to Dashboard <i class="fa-solid fa-arrow-right"></i></a>
+            {% else %}
+                <a href="{{ url_for('register') }}" class="btn btn-primary btn-glow">Get Started</a>
+                <a href="{{ url_for('login') }}" class="btn btn-outline">Login</a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="about-section glass-container">
+    <div class="section-title">
+        <h2>About This Project</h2>
+        <div class="underline"></div>
+    </div>
+    <div class="about-grid">
+        <div class="glass-card fade-in">
+            <i class="fa-brands fa-python fa-3x gradient-text"></i>
+            <h3>Backend Power</h3>
+            <p>Powered by Python and Flask, providing a robust and secure server-side architecture.</p>
+        </div>
+        <div class="glass-card fade-in delay-1">
+            <i class="fa-solid fa-database fa-3x gradient-text"></i>
+            <h3>Secure Database</h3>
+            <p>Utilizing SQLite and SQLAlchemy ORM for efficient data management and security.</p>
+        </div>
+        <div class="glass-card fade-in delay-2">
+            <i class="fa-solid fa-wand-magic-sparkles fa-3x gradient-text"></i>
+            <h3>Modern UI/UX</h3>
+            <p>Immersive Apple VisionOS & Windows 11 style Glassmorphism with Three.js graphics.</p>
+        </div>
+    </div>
+</section>
+
+<section class="features-section">
+    <div class="glass-card feature-showcase">
+        <div class="feature-text">
+            <h2>Experience True <span class="gradient-text">Glassmorphism</span></h2>
+            <p>Crystal cards, backdrop blurs, floating elements, and dynamic lighting create a sense of depth and realism unlike flat web designs.</p>
+            <ul class="feature-list">
+                <li><i class="fa-solid fa-check"></i> Interactive Three.js Background</li>
+                <li><i class="fa-solid fa-check"></i> Responsive Crystal Cards</li>
+                <li><i class="fa-solid fa-check"></i> Smooth CSS3 Animations</li>
+            </ul>
+        </div>
+        <div class="feature-graphic glass-card highlight-card">
+            <div class="graphic-circle"></div>
+            <div class="graphic-element">Interactive UI</div>
+        </div>
+    </div>
+</section>
+{% endblock %}

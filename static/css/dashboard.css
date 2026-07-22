@@ -1,0 +1,124 @@
+/* ==============================
+   DASHBOARD / PROFILE STYLING
+   ============================== */
+
+.dashboard-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 2rem;
+}
+
+.profile-summary {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.profile-pic-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    border: 2px solid #a855f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--text-muted);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+}
+
+.welcome-text h2 {
+    margin-bottom: 0.2rem;
+}
+
+.welcome-text p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.dashboard-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.inline-form {
+    display: inline;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.info-list li {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--glass-border);
+    display: flex;
+    flex-direction: column;
+}
+
+.info-list li:last-child {
+    border-bottom: none;
+}
+
+.info-list strong {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.25rem;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem 0;
+    color: var(--text-muted);
+}
+
+.empty-state i {
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+/* Edit Profile Specific */
+.profile-edit-card {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    .profile-summary {
+        flex-direction: column;
+    }
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}

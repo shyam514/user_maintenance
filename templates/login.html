@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - Portfolio App{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card glass-card slide-up-anim">
+        <div class="auth-header">
+            <h2>Welcome Back</h2>
+            <p>Login to your account</p>
+        </div>
+        <form action="{{ url_for('login') }}" method="POST" class="auth-form" id="loginForm">
+            <div class="form-group">
+                <label for="login_id"><i class="fa-solid fa-user"></i> Username or Email</label>
+                <input type="text" id="login_id" name="login_id" class="glass-input" required placeholder="Enter username or email">
+            </div>
+            <div class="form-group">
+                <label for="password"><i class="fa-solid fa-lock"></i> Password</label>
+                <input type="password" id="password" name="password" class="glass-input" required placeholder="Enter your password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block btn-glow">Login</button>
+        </form>
+        <div class="auth-footer">
+            <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

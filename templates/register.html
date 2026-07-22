@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - Portfolio App{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card glass-card slide-up-anim large-card">
+        <div class="auth-header">
+            <h2>Create Account</h2>
+            <p>Join our modern platform</p>
+        </div>
+        <form action="{{ url_for('register') }}" method="POST" class="auth-form" id="registerForm">
+            <div class="form-row">
+                <div class="form-group half-width">
+                    <label for="username"><i class="fa-solid fa-user"></i> Username</label>
+                    <input type="text" id="username" name="username" class="glass-input" required placeholder="Choose a username">
+                    <span class="error-text" id="usernameError"></span>
+                </div>
+                <div class="form-group half-width">
+                    <label for="email"><i class="fa-solid fa-envelope"></i> Email</label>
+                    <input type="email" id="email" name="email" class="glass-input" required placeholder="Enter your email">
+                    <span class="error-text" id="emailError"></span>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group half-width">
+                    <label for="password"><i class="fa-solid fa-lock"></i> Password</label>
+                    <input type="password" id="password" name="password" class="glass-input" required placeholder="Create a password">
+                </div>
+                <div class="form-group half-width">
+                    <label for="confirm_password"><i class="fa-solid fa-lock"></i> Confirm Password</label>
+                    <input type="password" id="confirm_password" name="confirm_password" class="glass-input" required placeholder="Confirm password">
+                    <span class="error-text" id="passwordError"></span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group half-width">
+                    <label for="contact"><i class="fa-solid fa-phone"></i> Phone Number</label>
+                    <input type="tel" id="contact" name="contact" class="glass-input" placeholder="e.g. +1234567890">
+                    <span class="error-text" id="contactError"></span>
+                </div>
+                <div class="form-group half-width">
+                    <label for="address"><i class="fa-solid fa-map-location-dot"></i> Address</label>
+                    <input type="text" id="address" name="address" class="glass-input" placeholder="Your address">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-glow">Register</button>
+        </form>
+        <div class="auth-footer">
+            <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/validation.js') }}"></script>
+{% endblock %}

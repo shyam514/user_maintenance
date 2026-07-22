@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Portfolio User Management{% endblock %}</title>
+    <!-- Modern Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Three.js Background Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="glass-navbar">
+            <div class="nav-brand">
+                <a href="{{ url_for('index') }}" class="brand-logo">
+                    <i class="fa-solid fa-gem"></i> Portfolio
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                {% if current_user %}
+                    {% if is_admin %}
+                        <li><a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                    {% endif %}
+                    <li><a href="{{ url_for('logout') }}" class="btn btn-outline">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}" class="btn btn-outline">Login</a></li>
+                    <li><a href="{{ url_for('register') }}" class="btn btn-primary">Register</a></li>
+                {% endif %}
+            </ul>
+            <div class="mobile-menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </nav>
+
+        <!-- Flash Messages -->
+        <div class="flash-messages-container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="flash-message glass-card {{ category }}">
+                            {{ message }}
+                            <button class="close-btn" onclick="this.parentElement.remove();">&times;</button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            {% block content %}{% endblock %}
+        </main>
+
+        <!-- Footer -->
+        <footer class="glass-footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Portfolio</h3>
+                    <p>Modern User Management System with Glassmorphism UI.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links</h3>
+                    <a href="{{ url_for('index') }}">Home</a>
+                    <a href="{{ url_for('login') }}">Login</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-github"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Portfolio User Management. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Three.js Core -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Custom Scripts -->
+    <script src="{{ url_for('static', filename='js/threeScene.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

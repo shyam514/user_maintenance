@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Portfolio App{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-header glass-card fade-in">
+        <div class="profile-summary">
+            <div class="profile-pic-placeholder">
+                <i class="fa-solid fa-user-astronaut"></i>
+            </div>
+            <div class="welcome-text">
+                <h2>Welcome, <span class="gradient-text">{{ user.username }}</span></h2>
+                <p>{{ user.email }} | Role: {{ user.role|capitalize }}</p>
+            </div>
+        </div>
+        <div class="dashboard-actions">
+            <a href="{{ url_for('profile') }}" class="btn btn-outline"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a>
+            <form action="{{ url_for('profile_delete') }}" method="POST" class="inline-form" onsubmit="return confirm('Are you sure you want to delete your account?');">
+                <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete Account</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="glass-card fade-in delay-1">
+            <h3><i class="fa-solid fa-address-card"></i> Profile Information</h3>
+            <ul class="info-list">
+                <li><strong>Username:</strong> {{ user.username }}</li>
+                <li><strong>Email:</strong> {{ user.email }}</li>
+                <li><strong>Phone:</strong> {{ user.contact or 'Not provided' }}</li>
+                <li><strong>Address:</strong> {{ user.address or 'Not provided' }}</li>
+                <li><strong>Member Since:</strong> {{ user.created_at.strftime('%Y-%m-%d') }}</li>
+            </ul>
+        </div>
+        <div class="glass-card fade-in delay-2">
+            <h3><i class="fa-solid fa-bolt"></i> Activity</h3>
+            <div class="empty-state">
+                <i class="fa-regular fa-calendar-xmark fa-3x"></i>
+                <p>No recent activity.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

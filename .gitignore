@@ -1,0 +1,18 @@
+# Python bytecode / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment / Virtualenv
+venv/
+env/
+ENV/
+.env
+
+# SQLite Database (optional - keep untracked so new environments create fresh DB)
+# users.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
