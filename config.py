@@ -4,8 +4,8 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'a-very-secret-key-for-portfolio-app'
     BASE_DIR = os.path.abspath(os.path.dirname(__file__))
     
-    # Handle Vercel serverless read-only filesystem by storing SQLite DB and uploads in /tmp
-    if os.environ.get('VERCEL'):
+    # Handle Vercel serverless read-only filesystem safely
+    if os.environ.get('VERCEL') or os.environ.get('VERCEL_ENV') or not os.access(BASE_DIR, os.W_OK):
         db_path = '/tmp/users.db'
         upload_path = '/tmp/uploads'
     else:
